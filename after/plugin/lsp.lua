@@ -37,4 +37,10 @@ lsp.on_attach(function(client, bufnr)
 
 end)
 
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js', "*.css", "*.vue" },
+  command = 'silent! EslintFixAll',
+  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
+})
+
 lsp.setup()
